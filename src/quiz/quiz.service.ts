@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Quiz } from './entities/quiz.entity';
 import { Repository } from 'typeorm';
 import { CreateQuizDto } from './dto/create-quiz.dto';
+import { UpdateQuizDto } from './dto/update-quiz.dto';
 
 @Injectable()
 export class QuizService {
@@ -16,6 +17,17 @@ export class QuizService {
 
   create(createDto:CreateQuizDto):Promise<Quiz>{
     return this.employeeRepo.save(createDto)
+  }
+  delete(id:number):string{
+
+    this.employeeRepo.delete(id)
+
+return `id${id } delete successfully`
+
+  }
+
+  findById(id:number):Promise<Quiz>{
+    return this.employeeRepo.findOneById(id);
   }
 
   
