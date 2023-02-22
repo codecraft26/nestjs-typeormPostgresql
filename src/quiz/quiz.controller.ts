@@ -17,6 +17,18 @@ export class QuizController {
   async create( @Body() createDto:CreateQuizDto):Promise<Quiz>{
     return await this.quizService.create(createDto)
   }
+  @Delete(':id')
+  async delete(@Param('id') id:number){
+    await this.quizService.delete(id)
+
+    return "delete suc"
+
+  }
+
+  @Get(':id')
+  async findById(@Param('id') id:number):Promise<Quiz>{
+    return this.quizService.findById(id)
+  }
 
  
 }
